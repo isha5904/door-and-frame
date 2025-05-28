@@ -1,0 +1,177 @@
+  body {
+            font-family: Times New Roman;
+			font-size:26;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+    display: flex;
+	
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.sidebar {
+	position: sticky;
+	top: 20%;
+    width: 220px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    margin-right: 20px; /* Adds space between sidebar and main content */
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+	  .container img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+.product-list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.product-item {
+    text-align: center;
+    width: 30%; /* Adjust based on your layout */
+}
+
+.product-item img {
+    width: 200px; /* Makes the image responsive */
+    height:200px; /* Maintains aspect ratio */
+    border: 1px solid #ccc; /* Optional styling */
+    border-radius: 5px; /* Optional styling */
+}
+
+        .main-content {
+            flex-grow: 1;
+            background-color: white;
+            padding: 20px;
+			font-family:Times New Roman;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+		
+        h2 {
+            text-align: center;
+            font-size: 36px;
+        }
+ /* Resetting default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('back.jpg'); /* Add your background image path here */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+		.
+		{
+		text-align:Center;
+		width : 50%;
+		height:100%;
+		font-size:50PX;
+		color: black;
+		mix-blend-mode: multiply;
+		}
+
+        /* Header Styles */
+        header {
+            background-color: rgba(30, 30, 30); /* Slightly transparent for better visibility */
+        
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+			color:black;
+        }
+
+        .logo img {
+            top:0;
+	    height: 25%;
+	    width: 20%;
+	    left:2;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+			
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 8px 15px;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+          footer {
+            background-color: rgba(30, 30, 30); /* Slightly transparent for better visibility */
+            color: white;
+            padding: 20px 0;
+            display: flex;
+			bottom:0;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+  footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }

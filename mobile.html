@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Door frame website </title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+        /* Resetting default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+			margin:0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('back.jpg'); /* Add your background image path here */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+        }
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+		.Title{
+		text-align:Center;
+		width : 50%;
+		height:100%;
+		font-size:50PX;
+		color: black;
+		mix-blend-mode: multiply;
+		}
+        /* Header Styles */
+        header {
+            background-color:black; /* Slightly transparent for better visibility */
+			position: fixed;
+			width : 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+	    color:black;
+        }
+        .logo img {
+            top:0;
+	    height: 28%;
+	    width: 20%;
+	    left:0;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;			
+        }
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 8px 15px;
+            transition: background-color 0.3s;
+        }
+        .menu a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #FF6600;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .btn-primary:hover {
+            background-color: #ff3b00;
+        }
+        /* Product Categories Section */
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 30px;
+        }
+        .category {
+            background-color: #fff;
+            width: 22%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .category:hover {
+            transform: scale(1.1); /* Apply the scale effect */
+            transition: transform 0.3s ease;
+        }
+        .category img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .category:hover img {
+            transform: scale(1.1); /* Apply the scaling effect on image */
+        }
+        .category-content {
+            padding: 10px;
+            text-align: center;
+        }
+        .category h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .category p {
+            font-size: 16px;
+            color: #555;
+        }
+        .category .btn-primary {
+            margin-top: 10px;
+        }
+        .scroll-hover {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .scroll-hover:hover {
+            transform: scale(1.0);
+            opacity: 0.9;
+        }
+        footer {
+            background-color: rgba(30, 30, 30); /* Slightly transparent for better visibility */
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .mySlides {
+            width: 100%;
+            height: 600px;
+			margin-top:90px;
+            display: none;
+			  
+        }
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+			
+        }
+        @keyframes moveup {
+            100% {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+        .door-visualizer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            color: #FF5722;
+            font-weight: bold;
+        }
+        .visualizer-content p {
+            font-size: 16px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        /* Right Side Styling */
+        .visualizer-image {
+            position: relative;
+            width: 50%;
+			height: 350px;
+            display: flex;
+            justify-content: center;
+        }
+        .room-bg {
+            width: 100%;
+            border-radius: 10px;
+        }
+		.visualizer-content {
+            width: 45%;
+        }
+        .phone-frame {
+            position: absolute;
+            top: 15%;
+            width: 220px;
+            height: 250px;
+            background: black;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 60px 50px 50px rgba(0, 0, 0, 0.6);
+        }
+        /* Door Images Inside Phone */
+        .door {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Only one image is visible at a time */
+        .door.active {
+            opacity: 1;
+        }
+       /* .product-range {
+            padding: 50px;
+            max-width: 1200px;
+            margin: auto;
+        }
+         Aligns PRODUCT RANGE and Product Items in Same Line */
+        .product-header {
+		 padding: 50px;
+            max-width: 1400px;
+            margin: auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        /* Product Range Title Section */
+        .content {
+		
+            width: 75%;
+        }
+        .content p {
+		font-family:Arial;
+		font-weight: bold;
+            font-size: 20px;
+            line-height: 1.6;
+            color: #444;
+        }
+        /* Product Container */
+        .product-container {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        /* Product Item */
+        .product-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            gap: 20px;
+        }
+        .product-item img {
+            width: 40%;
+            border-radius: 10px;
+        }
+        .product-text {
+            width: 60%;
+        }
+        .product-text h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .product-text p {
+            font-size: 14px;
+            color: #666
+			line-height: 1.5;
+            margin-bottom: 15px;
+        }
+.scroll-text {
+    opacity: 0; /* Start hidden */
+    transform: translateY(0px); /* Start slightly below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for fade-in */
+}
+.scroll-text.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+	.cate {
+            display: flex;
+			margin-Left:3%;
+            flex-wrap: wrap;
+            gap: 170px;
+            padding: 3px;   
+        }
+.cat:hover {
+            transform: scale(1.1); /* Apply the scale effect */
+            transition: transform 0.3s ease;
+        }
+.cat:hover img {
+            transform: scale(1.0); /* Apply the scaling effect on image */
+        }
+ .categor {
+                flex-direction: column;
+                align-items: center;
+
+ box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            }
+        .cat {
+            width: 180px;
+            text-align: center;
+	     transition: transform 0.3s ease;
+        }
+        .cat img {
+            width: 310px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+	     transition: transform 0.3s ease;
+ box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+        .cat h3 {
+            margin: 10px 0 2px;
+            font-size: 18px;
+        }
+        .cat p {
+            margin: 0;
+            color: gray;
+		font-size: 20px;
+   text-align: center;
+        }
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            font-size: 30px;
+            z-index: 1000;
+        }
+        .whatsapp-float img {
+            width: 40px;
+            height: 40px;
+        }
+		.text-overlay {
+  position: absolute;
+top: 40%;
+right:30%;
+ text-align:center;
+ width:45%;
+  box-shadow: 10px 20px 30px rgba(10, 0, 0, 0.5);
+  background-color: rgb(10 0 0 / 0.7);
+  color: white;
+  opacity: 1.5;
+}
+.text-overlay h1 {
+color:#873600;
+  font-size: 60px;
+margin-bottom:0;
+}
+.text-overlay p {
+color:#9a7d0a ;
+  font-size: 50px;
+margin:10; 
+}
+@media (max-width: 600px) {
+    body {
+       
+        background-color: #f9f9f9; /* Use a solid color */
+    }
+	.text-overlay {
+  position: absolute;
+top: 40%;
+right:30%;
+width:80%;
+ text-align:center;
+ width:50%;
+  box-shadow: 10px 20px 30px rgba(10, 0, 0, 0.5);
+  background-color: rgb(10 0 0 / 0.7);
+  color: white;
+  opacity: 1.5;
+}
+.text-overlay h1 {
+color:#873600;
+  font-size: 30px;
+margin-bottom:0;
+}
+.text-overlay p {
+color:#9a7d0a ;
+  font-size: 25px;
+margin:10; 
+}
+    .Title {
+        font-size: 30px; /* Reduce font size for mobile */
+        width: 90%; /* Increase width for better visibility */
+    }
+ .mySlides {
+            width: 100%;
+            height: 600px;
+			margin-top:0px;
+            display: none;
+        }
+    header {
+            background-color: #1e1e1e;
+            padding: 0px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+        .logo img {
+            width: 50px;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+       
+
+    .nav-container {
+        flex-direction: row; /* Keep items in a row */
+    }
+
+   
+    .categories {
+        flex-direction: column; /* Stack categories vertically */
+        align-items: center; /* Center align categories */
+    }
+
+    .category {
+        width: 90%; /* Full width for categories */
+        margin-bottom: 20px; /* Add space between categories */
+    }
+
+    .category img {
+        height: 150px; /* Reduce image height */
+    }
+
+    .product-header {
+	 display:flex;
+        flex-direction: column; /* Stack product header items vertically */
+        align-items: center;	/*Center align items */
+		padding:0;
+		margin:0;
+		width:auto;
+		max-width:700px;
+    }
+
+    .product-container {
+        width: 100%; /* Full width for product container */
+    }
+
+    .product-item {
+        flex-direction: column; /* Stack product items vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .content p {
+        /*font-family: Arial, sans-serif;  Ensure font is readable */
+        font-size: 16px;	
+        color: #444; /* Set text color */
+		/*text-align:  center;*/
+	margin-bottom:10px;
+	
+    }
+    .product-item img {
+        width: 70%; /* Full width for product images */
+        height: 50%; /* Maintain aspect ratio */
+    }
+ .door-visualizer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px;
+            margin: auto;
+			flex-direction:column;
+        }
+    .visualizer-content {
+        width: 100%; /* Full width for visualizer content */
+        padding: 20px; /* Add padding */
+    }
+.room-bg {
+            width: 100%;
+            border-radius: 10px;
+        }
+   
+	.phone-frame {
+            position: absolute;
+            top: 15%;
+            width: 50%;
+            height: 50%;
+            background: black;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 60px 50px 50px rgba(0, 0, 0, 0.6);
+        }
+        /* Door Images Inside Phone */
+        .door {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Only one image is visible at a time */
+        .door.active {
+            opacity: 1;
+        }
+.door-visualizer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            color: #FF5722;
+            font-weight: bold;
+        }
+        /* Right Side Styling */
+        .visualizer-image {
+            position: relative;
+            width: 100%;
+			height: auto;
+            display: flex;
+            justify-content: center;
+}
+        
+    .cat {
+        width: 80%; /* Full width for category items */
+        margin-bottom: 20px; /* Add space between category items */
+    }
+
+    footer {
+        flex-direction: column; /* Stack footer items vertically */
+        align-items: center; /* Center align items */
+    }
+
+    footer img {
+        width: 100%; /* Full width for footer image */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .whatsapp-float {
+        width: 50px; /* Adjust size for mobile */
+        height: 50px; /* Adjust size for mobile */
+		h1, h2 {
+    font-weight: bold; /* Ensures titles are bold */
+    font-size: 24px;  /* Sets title size */
+}
+
+p {
+    text-align: left;  /* Aligns text to the left */
+    line-height: 1.5;  /* Increases line spacing */
+    margin-bottom: 1em; /* Adds space after paragraphs */
+}
+
+ul {
+    list-style-type: disc; /* Uses bullet points for lists */
+    margin-left: 20px;   /* Indents list */
+}
+	}}
+	
+@media (max-width: 1080px) {
+    body {
+        background-image: none; /* Remove background image for better performance */
+        background-color: #f9f9f9; /* Use a solid color */
+    }
+	.text-overlay {
+  position: absolute;
+top: 10%;
+right:30%;
+width:50%;
+ text-align:center;
+ width:50%;
+  box-shadow: 10px 20px 30px rgba(10, 0, 0, 0.5);
+  background-color: rgb(10 0 0 / 0.7);
+  color: white;
+  opacity: 1.5;
+}
+.text-overlay h1 {
+color:#873600;
+  font-size: 30px;
+margin-bottom:0;
+}
+.text-overlay p {
+color:#9a7d0a ;
+  font-size: 25px;
+margin:10; 
+}
+}
+
+
+.foot {
+flex: 1; 
+padding-left: 20px;}
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/918619171705" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+	<div  class="text-overlay"><br>
+<p> <b>WELCOME TO </b></p>	
+    <h1   > Shree Shyam Stone <br>-Hansraj </h1>
+    <br>
+  </div>
+<script>
+// Function to display the images
+let myIndex = 0; // Start at first slide
+
+function carousel() {
+    let slides = document.getElementsByClassName("mySlides");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; // Hide all slides
+    }
+    myIndex++; // Increment slide index
+    if (myIndex > slides.length) { myIndex = 1 } // If at the last slide, go back to the first
+    slides[myIndex - 1].style.display = "block"; // Display current slide
+    setTimeout(carousel, 3500); // Change slide every 3 seconds
+}
+
+window.onload = function() {
+    carousel(); // Start the carousel when the page is loaded
+    document.getElementsByClassName("mySlides")[0].style.display = "block"; // Show first slide initially
+
+    // Function to hide the welcome box after 5 seconds
+    setTimeout(function() {
+        const welcomeBox = document.querySelector('.text-overlay');
+        if (welcomeBox) {
+            welcomeBox.style.display = 'none'; // Hides the welcome box
+        }
+    }, 4000); 
+}
+
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Function to add the 'visible' class to elements in the viewport
+function checkScroll() {
+    const scrollTextElements = document.querySelectorAll('.scroll-text');
+    scrollTextElements.forEach((el) => {
+        if (isElementInViewport(el)) {
+            el.classList.add('visible');
+        }
+    });
+}
+
+// Event listener for scroll
+window.addEventListener('scroll', checkScroll);
+
+// Initial check in case elements are already in view
+checkScroll();
+</script>
+<!-- Header -->
+<header>
+    <div class="nav-container">
+      <div class="logo"><img src="F.jpg"></div> 
+        <div class="menu">
+            <a href="home.html">Dashboard</a>
+            <a href="#1" class="cate">Categories</a>
+
+            <a href="#2" class="foot">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-
+					5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="mySlides">
+    <img src="kitchen.jpg" alt="Image 1">
+</div>
+<div class="mySlides">
+    <img src="stairs.jpg" alt="Image 2">
+</div>
+<div class="mySlides">
+    <img src="bath1.jpg" alt="Image 3">
+</div>
+<div class="mySlides">
+    <img src="hall1.jpg" alt="Image 3">
+</div><br><div style="background-color:white;" >
+<hr width="100%" size="2" color="black"></hr>
+<section class="showcase">
+<center>
+<h2 class="Title scroll-text">NEW ARTICLES .....</h2></center>
+</section>
+<!-- Product Categories Section -->
+<section  class="categories">
+    <div class="category scroll-text">
+        <img src="Rblack.jpg" alt="Category 1">
+        <div class="category-content">
+            <h3>R Black Granite</h3>
+            <p>Stylish, sleek, and sophisticated modern designs.</p><br>
+            <a href="#modern" class="btn-primary">View</a>
+        </div>
+    </div>
+    <div class="category scroll-text">
+        <img src="pink.jpg" alt="Category 2">
+        <div class="category-content">
+            <h3>Jodhpur Sand Stone</h3>
+            <p>Timeless beauty and elegance for every home.</p><br>
+            <a href="#classic" class="btn-primary">View</a>
+        </div>
+    </div>
+    <div class="category scroll-text">
+        <img src="quartzmarble.jpg" alt="Category 2">
+        <div class="category-content">
+            <h3>Quartz Marble</h3>
+            <p>Timeless beauty and elegance for every home.</p><br>
+            <a href="#classic" class="btn-primary">View</a>
+        </div>
+    </div>
+    <div class="category scroll-text">
+        <img src="bluemarble.jpg" alt="Category 3">
+        <div class="category-content">
+            <h3>Blue Bahiya Marble</h3>
+            <p>Today I am a small blue thing Like a marble or an eye.</p><br>
+            <a href="#custom" class="btn-primary">View</a>
+        </div>
+		
+    </div>
+	
+</section><br>
+</div >
+<section>
+    <div class="product-header">
+        <div class="content">
+            <h2>PRODUCT <span class="highlight">RANGE</span></h2>
+            <p class= "container">
+        When we think of marble, we think of clarity and the craftsmanship
+        behind it. Doors & Frames are offered as a single, factory-finished
+        unit. The complete marble set is a natural progression from
+        outdated marble to classic white marble flooring, which remains a
+        timeless choice. Contemporary interior design trends often embrace
+        alternatives that add a touch of uniqueness, like large-format
+        porcelain tiles with marble-inspired...
+            </p>
+        </div>
+        <div class="product-container">
+            <div class="product-item">
+                <img src="marineblack.jpg" alt="Fire Rated Doors">
+                <div class="product-text scroll-text ">
+                    <h3>Marine Black Granite</h3>
+                    <p>Curated collections that redefine the concept of design, offering a seamless blend of functionality and aesthetic appeal. Marine Black Marble is a stunning marble quarried in India, known for its deep black background accented with dramatic white quartz veins and wave-like patterns. <br>Making it an ideal choice for a variety of applications in both residential and commercial spaces.</p>            
+                </div>
+            </div>
+
+            <div class="product-item ">
+                <img src="IT.jpg" alt="Designer Doors">
+                <div class="product-text scroll-text ">
+                    <h3>Grey William Italy </h3>
+					<P>This beautiful Grey William marble is quarried in Italy and recognized by other names such as Grigio William marble and Monte Billiemi marble. In this marble, you can find multiple shades of color ranging from dark brown to other gray shades.</p>
+                    <p>Curated collections that redefine the concept of design, offering a seamless blend of functionality and aesthetic appeal.</p>              
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<div style="background-color:#bfbfbf;" >
+<section class="door-visualizer">
+    <!-- Left Side Content -->
+    <div class="visualizer-content scroll-hover scroll-text">
+        <h2>THE ULTIMATE <br><span class="highlight">DOOR VISUALIZER</span></h2>
+        <p>Use our innovative visualizer tool to try out different surfacing options from our door set collection before placing an order for your door set, and make sure you get the perfect match complementing your decor.</p>
+    </div>
+    <!-- Right Side Image with Animation -->
+    <div class="visualizer-image scroll-text">
+        <img src="phoneback.jpg" alt="Room Background" class="room-bg">
+        <!-- Phone Frame with Changing Doors -->
+        <div class="phone-frame scroll-text">
+            <img src="IT.jpg" class="door " alt="Door Style">
+            <img src="Rblack.jpg" class="door" alt="Door Style">
+            <img src="bluemarble.jpg" class="door" alt="Door Style">
+			<img src="marineblack.jpg" class="door" alt="Door Style">
+		    <img src="quartzmarble.jpg" class="door" alt="Door Style">
+	   	    <img src="pink.jpg" class="door" alt="Door Style">
+			<img src="marble.jpg" class="door" alt="Door Style">
+        </div>
+    </div>
+</section>
+</div>
+<br><br>
+<div id="1" class="categor" style="background-image: url('catemarble.jpg'); background-size:cover;  background-position: center; background-repeat: no-repeat"; ">
+  <h1 style="font-family: palatino bold italic; font-size: 24;">Would you like to choose.. </h1>
+<br>
+    <div class="cate scroll-hover">
+        <div class="cat">
+        <a href="floor.html" ><img src="bath.jpg" alt="Imported Marble">
+            <h3>Flooring</h3></a>
+        </div>
+        <div class="cat">
+         <a href="kitchen.html"><img src="kitchen.jpg" alt="Indian Granite">
+            <h3>Kitchen</h3></a>
+        </div>
+        <div class="cat">
+        <a href="Stairs.html" ><img src="stairs.jpg" alt="Indian Marble">
+            <h3>Stairs</h3></a>
+        </div>
+        <div class="cat">
+        <a href="door.html" ><img src="hall.jpg" alt="Onyx Marble">
+            <h3>Door-frame</h3></a>
+        </div>
+    </div>
+</div>
+<br>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const doors = document.querySelectorAll(".door");
+        let currentIndex = 0;
+
+        function changeDoor() {
+            doors.forEach((door, index) => {
+                door.classList.remove("active");
+                if (index === currentIndex) {
+                    door.classList.add("active");
+                }
+            });
+
+            currentIndex = (currentIndex + 1) % doors.length;
+        }
+
+        setInterval(changeDoor, 2000); // Change door every 2 seconds
+    });
+	
+const images = document.querySelectorAll('img.lazy');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const image = entry.target;
+      image.src = image.dataset.src;
+      image.classList.remove('lazy');
+      observer.unobserve(image);
+    }
+  });
+}, {
+  rootMargin: '50px',
+});
+
+images.forEach((image) => {
+  observer.observe(image);
+});
+
+</script>
+<div>
+    <footer>
+        <div class="foot" id="2">
+            <form action="#" method="post" style="display: flex; flex-direction: column; gap: 10px;">
+                <h2><center>Feedback:</center></h2>
+                <input type="text" name="name" placeholder="Name" required style="padding: 10px;">
+                <input type="email" name="email" placeholder="Email" required style="padding: 10px;">
+                <input type="tel" name="phone" placeholder="Phone Number" required style="padding: 10px;">
+                <textarea name="comments" placeholder="Comments" style="padding: 10px;"></textarea>
+                <label>
+                    <input type="checkbox" name="consent" required> I consent to have this website store my submitted information.
+                </label>
+                <button type="submit" style="padding: 10px; background-color: #FF6600; color: white; border: none; border-radius: 5px;">Submit</button>
+            </form>
+        </div>
+		<br>
+        <div style="flex: 1; text-align: center;">
+            <img src="map.jpeg" width="350" height="180" alt="Map">
+            <br>
+            <span>Address: Shree Shyam Stone, <br>
+			Industrial area Kali dungari kisangarh Ajmer(Raj.)</span>
+            <br><br>
+            <span>
+            <a href="https://www.facebook.com/profile.php?id=100077666224692&mibextid=ZbWKwL" style="margin: 0 10px; "><i class="fab fa-facebook-f fa-2x"></i> </a>
+            <a href="https://www.instagram.com/doorframe0?igsh=MzNlNGNkZWQ4Mg==" style="margin: 0 10px;"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://wa.me/918619171705" style="margin: 0 10px;"><i class="fab fa-whatsapp fa-2x"></i> </a>
+            <a href="#twitt" style="margin: 0 10px;"><i class="fa-solid fa-mobile fa-2x"></i> +918619171705</a>
+            </span>
+            <br>
+            <span>&copy; 2025 Door & Frame. All Rights Reserved.</span>
+            <br>
+            <a href="#privacy" style="color: white; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+            <a href="#terms" style="color: white; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

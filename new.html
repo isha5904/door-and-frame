@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Door Frame Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .product-header {
+            padding: 20px;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 0 auto;
+        }
+        .content {
+            width: 100%;
+            text-align: center;
+        }
+        .content p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #444;
+        }
+        .product-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        .product-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+        }
+        .product-item img {
+            width: 50%;
+            border-radius: 10px;
+        }
+        .product-text {
+            width: 100%;
+            text-align: center;
+        }
+        .product-text h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .product-text p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 600px) {
+            body {
+                background-image: none;
+                background-color: #f9f9f9;
+            }
+            .product-header {
+                flex-direction: column;
+                align-items: center;
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+            }
+            .content {
+                width: 100%;
+                padding: 10px;
+            }
+            .product-item {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div style="width:100%;">
+            <div class="product-header">
+                <div class="content">
+                    <h2>PRODUCT <span class="highlight">RANGE</span></h2>
+                    <p>
+                        When we think of marble, we think of clarity and the craftsmanship behind it.
+                        Doors & Frames are offered as a single, factory-finished unit. The complete marble set is a
+                        natural progression from outdated marble to classic white marble flooring, which remains a timeless choice.
+                    </p>
+                </div>
+                <div class="product-container">
+                    <div class="product-item">
+                        <img src="marineblack.jpg" alt="Marine Black Granite">
+                        <div class="product-text">
+                            <h3>Marine Black Granite</h3>
+                            <p>Curated collections that redefine the concept of design, offering a seamless blend of functionality and aesthetic appeal.
+                            Marine Black Marble is a stunning marble quarried in India, known for its deep black background accented with dramatic white quartz veins and wave-like patterns.</p>
+                        </div>
+                    </div>
+                    <div class="product-item">
+                        <img src="IT.jpg" alt="Grey William Italy">
+                        <div class="product-text">
+                            <h3>Grey William Italy</h3>
+                            <p>This beautiful Grey William marble is quarried in Italy and recognized by other names such as Grigio William marble and Monte Billiemi marble.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

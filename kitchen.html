@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen</title>
+		   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<style>
+  body {
+          font-family: Times New Roman;
+          font-size:26;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f4;
+        }
+   .container {
+    display: flex;	
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.sidebar {
+	position: sticky;
+	top: 20%;
+    width: 220px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    font-size: 24px;
+    text-align: center;
+    margin-right: 20px; /* Adds space between sidebar and main content */
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        .product {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .product h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .product p {
+            margin: 5px 0;
+        }
+
+        select {
+            padding: 5px;
+            margin-right: 10px;
+width: 70%;
+        }
+	  .container img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates a responsive grid */
+    gap: 20px; /* Adds spacing between items */
+    justify-content: center;
+    align-items: start;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #ddd; /* Optional border for better structure */
+    padding: 10px;
+    background-color: white;
+}
+
+
+.product-item img {
+    width: 200px; /* Makes the image responsive */
+    height:200px; /* Maintains aspect ratio */
+    border: 1px solid #ccc; /* Optional styling */
+    border-radius: 5px; /* Optional styling */
+}
+
+        .main-content {
+            flex-grow: 1;
+            background-color: white;
+            padding: 20px;
+			font-family:Times New Roman;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+		
+        h2 {
+            text-align: center;
+            font-size: 36px;
+        }
+ /* Resetting default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            background-image: url('back.jpg'); /* Add your background image path here */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+		.
+		{
+		text-align:Center;
+		width : 50%;
+		height:100%;
+		font-size:50PX;
+		color: black;
+		mix-blend-mode: multiply;
+		}
+
+        /* Header Styles */
+        header {
+            background-color: Black; /* Slightly transparent for better visibility */
+        
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+			color:black;
+        }
+
+        .logo img {
+            top:0;
+	    height: 25%;
+	    width: 20%;
+	    left:2;
+        }
+        .menu {
+            display: flex;
+            gap: 20px;
+			
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 8px 15px;
+            transition: background-color 0.3s;
+        }
+
+        .menu a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+          footer {
+            background-color: rgba(30, 30, 30); /* Slightly transparent for better visibility */
+            color: white;
+            padding: 10px 0;
+            display: flex;
+	    bottom:0;
+		text-align: center;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+		.product {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .product h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .product p {
+            margin: 5px 0;
+        }
+
+        select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+  footer {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+				.whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            font-size: 30px;
+            z-index: 1000;
+        }
+        .whatsapp-float img {
+            width: 40px;
+            height: 40px;
+        }
+@media (max-width: 600px){
+            .product-item {
+                width: 48%;
+            }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1e1e1e;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            text-align: center;
+        }
+        .logo img {
+            width: 50px;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .menu a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+       
+        select {
+            width: 100%;
+            padding: 8px;
+        }
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+    .container {
+        flex-direction: column; /* Stack sidebar and main content vertically */
+		
+    }
+
+    .sidebar {
+        width: 100%; /* Make sidebar full width */
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 0px; /* Add some space below the sidebar */
+position: relative;
+
+    }
+
+    .main-content {
+        margin-top:20px;
+		margin-left: 0; /* Remove left margin */
+		
+    }
+
+    .product-item {
+        width: 100%; /* Make product items full width */
+    }
+        .product-item img {
+            width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #1e1e1e;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 5px;
+        }
+		.whatsapp-float {
+        width: 50px; /* Adjust size for mobile */
+        height: 50px; /* Adjust size for mobile */
+		h1, h2 {
+    font-weight: bold; /* Ensures titles are bold */
+    font-size: 24px;  /* Sets title size */
+}
+		p {
+    text-align: left;  /* Aligns text to the left */
+    line-height: 1.5;  /* Increases line spacing */
+    margin-bottom: 1em; /* Adds space after paragraphs */
+}
+
+ul {
+    list-style-type: disc; /* Uses bullet points for lists */
+    margin-left: 20px;   /* Indents list */
+}
+	}
+    }
+</style>
+    </head>
+
+<body>
+<a href="https://wa.me/918619171705" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+<header>
+    <div class="nav-container">
+      <div class="logo"><img src="F.jpg"></div> 
+        <div class="menu">
+            <a href="mobile.html">Dashboard</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About</a>
+            <a href="login.html">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-
+					5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z" clip-rule="evenodd"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="sidebar">
+        <img src="kitchen.jpg">
+        Category<br>
+	<select id="category" onchange="filterProducts()">
+            <option value="all">All</option>
+            <option value="granite">Granite</option>
+            <option value="quartz">Quartz</option>
+        </select>
+<br><br>
+    </div>
+
+    <div class="main-content">
+        <h1>Kitchen Slab</h1>
+        <h3>A black granite countertop goes well with pretty much all the colours you can find in a modular kitchen catalogue. Once you have installed it, you have absolutely nothing to worry about. It is ideal for a busy kitchen that sees a lot of rough use. Since it is easy to clean and maintain, you can even chop straight on the granite and clean it off.<br> Granite is scratch and stain proof and retains its shine for years. Italian granite comes in various colours too.</h3>
+        <div class="product-list">
+		<div class="product-item product" data-category="granite">
+                <img src="kt27.jpg" alt="Brescia Aurora Classic" />
+                <h3>black marquina granite</h3>
+                </div>
+                <div class="product-item product"  data-category="granite">
+                <img src="kt2.jpg" alt="Brescia Aurora Classic" />
+                <h3>Jet Black Granite</h3>
+                </div>			
+		<div class="product-item product" data-category="granite">
+                <img src="kt12.jpg" alt="Brescia Aurora Classic" />
+                <h3>Gem Red granite </h3>
+                </div>
+                <div class="product-item product" data-category="granite">
+                <img src="kt4.jpg" alt="Burberry Beige" />
+                <h3>Blue perl Black North Granite</h3>
+                </div>
+	        <div class="product-item product" data-category="granite">
+                <img src="kt5.jpg" alt="Burberry Beige" />
+                <h3>R Perl Granite</h3>
+                </div>
+        </div>
+	<div class="product-list ">
+            <div class="product-item product" data-category="granite">
+            <img src="kt6.jpg" alt="Bianco Oro" />
+            <h3>R Black  granite</h3>
+            </div>
+            <div class="product-item product" data-category="granite">
+            <img src="kt7.jpg" alt="Brescia Aurora Classic" />
+            <h3>Titanium Black Granite</h3>
+            </div>
+            <div class="product-item product" data-category="quartz">
+            <img src="kt8.jpg" alt="Burberry Beige" />
+            <h3>sahara white granite</h3>
+            </div>
+            <div class="product-item product" data-category="quartz">
+            <img src="kt9.jpg" alt="Burberry Beige" />
+            <h3>akshara pink granite</h3>
+            </div>
+	    <div class="product-item product" data-category="quartz">
+            <img src="kt10.jpg" alt="Burberry Beige" />
+            <h3>markino gold granite</h3>
+            </div>
+        </div>
+       <div class="product-list ">
+            <div class="product-item product" data-category="quartz">
+            <img src="kt11.jpg" alt="Bianco Oro" />
+            <h3>Ten Brown Granite</h3>
+            </div>
+            <div class="product-item product" data-category="quartz">
+            <img src="kt3.jpg" alt="Burberry Beige" />
+            <h3>Green Perl Granite</h3>
+            </div>
+            <div class="product-item product" data-category="quartz">
+            <img src="kt13.jpg" alt="Burberry Beige" />
+            <h3>Ze browm north granite</h3>
+            </div>
+            <div class="product-item product" data-category="granite" >
+            <img src="kt14.jpg" alt="Burberry Beige" />
+            <h3>red perl  granite</h3>
+            </div>
+	    <div class="product-item product" data-category="granite">
+            <img src="kt15.jpg" alt="Burberry Beige" />
+            <h3>himalayan blue granite</h3>
+            </div>
+        </div>
+        <div class="product-list">
+            <div class="product-item product" data-category="granite">
+            <img src="kt16.jpg" alt="Bianco Oro" />
+            <h3>lakha red granite</h3>
+            </div>
+            <div class="product-item product" data-category="granite">
+            <img src="kt17.jpg" alt="Brescia Aurora Classic" />
+            <h3>tiger granite</h3>
+            </div>
+            <div class="product-item product" data-category="granite">
+            <img src="kt18.jpg" alt="Burberry Beige" />
+            <h3>crystal blue   granite</h3>
+            </div>
+            <div class="product-item  product" data-category="granite">
+            <img src="kt19.webp" alt="Burberry Beige" />
+            <h3>china united granite</h3>
+            </div>
+	    <div class="product-item product" data-category="granite">
+            <img src="kt20.jpg" alt="Burberry Beige" />
+            <h3>premium p white</h3>
+            </div>
+        </div>
+	<div class="product-list">
+            <div class="product-item product" data-category="granite">
+            <img src="kt21.jpg" alt="Bianco Oro" />
+            <h3>bambo green granite</h3>
+            </div>
+            <div class="product-item product" data-category="granite">
+            <img src="kt22.jpg" alt="Brescia Aurora Classic" />
+            <h3>Kashmir White</h3>
+            </div>
+	    <div class="product-item product" data-category="quartz">
+            <img src="kt23.jpg" alt="Burberry Beige" />
+            <h3>seaweed green granite</h3>
+            </div>
+            <div class="product-item product" data-category="quartz">
+            <img src="kt24.jpg" alt="Burberry Beige" />
+            <h3>special green granite</h3>
+            </div>
+            <div class="product-item product" data-category="quartz">
+            <img src="kt25.jpg" alt="Burberry Beige" />
+            <h3>takhi green granite</h3>
+            </div>
+        </div>
+	<div class="product-list">
+            <div class="product-item product" data-category="quartz">
+            <img src="kt26.jpg" alt="Bianco Oro" />
+            <h3>black mosaic granite</h3>
+            </div>
+            <div class="product-item product" data-category="quartz">
+            <img src="kt1.jpg" alt="Bianco Oro" />
+            <h3>Absolute Black</h3>
+            </div>
+            <div class="product-item product" data-category="quartz">
+            <img src="kt28.jpg" alt="Burberry Beige" />
+            <h3>volga gold granite</h3>
+            </div>
+            <div class="product-item product" data-category="granite">
+            <img src="kt29.jpg" alt="Burberry Beige" />
+            <h3>ruby black granite</h3>
+            </div>
+            <div class="product-item product" data-category="granite">
+            <img src="kt30.jpg" alt="Burberry Beige" />
+            <h3>Blue Pearl Granite</h3>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        function filterProducts() {
+    const categoryFilter = document.getElementById('category').value;
+    const products = document.querySelectorAll('.product-item');
+
+    products.forEach(product => {
+        const productCategory = product.getAttribute('data-category');
+
+        if (categoryFilter === 'all' || productCategory === categoryFilter) {
+            product.style.display = 'flex';  // Use flex to maintain layout
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+const images = document.querySelectorAll('img.lazy');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const image = entry.target;
+      image.src = image.dataset.src;
+      image.classList.remove('lazy');
+      observer.unobserve(image);
+    }
+  });
+}, {
+  rootMargin: '50px',
+});
+
+images.forEach((image) => {
+  observer.observe(image);
+});
+    </script>
+<div>
+        <footer>
+        
+        <div style="flex: 1; text-align: center;">
+            <img src="map.jpeg" width="350" height="180" alt="Map">
+            <br>
+            <span>Address: Shree Shyam Stone 
+Industrial area Kali dungari kisangarh Ajmer (Raj.)</span>
+            <br>
+            <span>
+            <a href="https://www.facebook.com/profile.php?id=100077666224692&mibextid=ZbWKwL" style="margin: 0 10px; "><i class="fab fa-facebook-f fa-2x"></i> </a>
+            <a href="https://www.instagram.com/doorframe0?igsh=MzNlNGNkZWQ4Mg==" style="margin: 0 10px;"><i class="fab fa-instagram fa-2x"></i></a>
+            <a href="https://wa.me/918619171705" style="margin: 0 10px;"><i class="fab fa-whatsapp fa-2x"></i> </a>
+            <a href="#twitt" style="margin: 0 10px;"><i class="fab fa-mobile fa-2x"></i> +918619171705</a>
+            </span>
+            <br>
+            <span>&copy; 2025 Door & Frame. All Rights Reserved.</span>
+            <br>
+            <a href="#privacy" style="color: white; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
+            <a href="#terms" style="color: white; text-decoration: none; margin: 0 10px;">Terms of Service</a>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
